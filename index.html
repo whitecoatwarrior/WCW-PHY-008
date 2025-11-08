@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2N316gzPWvSV7_59Mjx49idXLH8Sc7S_S0nHhvGjYxhhGjTm8UBnsRB4VGgeuluL0/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_PHY_04 = [
+    {
+        question: "Q1: What is the fundamental requirement for electromagnetic induction to occur in a conductor or coil?",
+        options: [
+            "A change in magnetic flux linking the conductor over time.",
+            "A constant magnetic field strength around the conductor.",
+            "The conductor moving at a constant speed through a uniform magnetic field.",
+            "A steady direct current flowing through the conductor."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: 'The basic requirement for electromagnetic induction is a change in magnetic flux linking the conductor or coil over time.'"
+    },
+    {
+        question: "Q2: In the primary/secondary coil experiment, what observation is made in the secondary coil when a steady current flows through the primary coil?",
+        options: [
+            "A continuous current is induced in the secondary coil.",
+            "An e.m.f. is induced, but no current flows.",
+            "No e.m.f. or current is induced in the secondary coil.",
+            "The induced current reverses direction periodically."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: 'A steady current in the primary coil results in no induced current in the secondary coil, as there's no change in magnetic flux.'"
+    },
+    {
+        question: "Q3: How is a statically induced e.m.f. characterized?",
+        options: [
+            "The conductor is moving, and the magnetic field is stationary.",
+            "The conductor is stationary, and the magnetic field changes around it.",
+            "Both the conductor and the magnetic field are moving at constant velocities.",
+            "The conductor's orientation relative to a steady magnetic field is changing."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: 'Statically Induced E.M.F.: Occurs when the conductor is stationary, and the magnetic field (e.g., from a moving magnet) changes around it.'"
+    },
+    {
+        question: "Q4: What is the primary purpose of Lenz's law in the context of electromagnetic induction?",
+        options: [
+            "To calculate the magnitude of the induced electromotive force.",
+            "To determine the efficiency of energy conversion.",
+            "To quantify the resistance of the conducting material.",
+            "To determine the direction of the induced e.m.f. or current."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: 'Lenz's law is used to determine the direction of the induced e.m.f. or current.'"
+    },
+    {
+        question: "Q5: What type of current is essential for the operation of transformers?",
+        options: [
+            "Alternating current (AC).",
+            "Direct current (DC).",
+            "Pulsating direct current.",
+            "Any form of constant current."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: 'Transformers operate only with alternating current (AC) because they rely on a continuously changing magnetic field.'"
+    },
+    {
+        question: "Q6: According to Faraday's First Law of Electromagnetic Induction, how is the induced e.m.f. related to magnetic flux?",
+        options: [
+            "It is inversely proportional to the total magnetic flux.",
+            "It is directly proportional to the rate of change of magnetic flux.",
+            "It is directly proportional to the square of the magnetic flux.",
+            "It is unrelated to the rate of change, only to the total flux."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: 'Law 1 (Magnitude of E.M.F.): The induced e.m.f. is directly proportional to the rate of change of magnetic flux (ΔΦ/Δt) through the coil.'"
+    },
+    {
+        question: "Q7: According to Faraday's Second Law of Electromagnetic Induction, how is the induced e.m.f. related to the coil's structure?",
+        options: [
+            "It is inversely proportional to the number of turns in the coil.",
+            "It is proportional to the square of the number of turns in the coil.",
+            "It is directly proportional to the number of turns in the coil.",
+            "It is independent of the number of turns in the coil."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: 'Law 2 (Number of Turns): The induced e.m.f. is directly proportional to the number of turns (N) in the coil.'"
+    },
+    {
+        question: "Q8: What observation relates the speed of relative motion between a magnet and a coil to the induced current?",
+        options: [
+            "Faster motion results in a smaller induced current.",
+            "Speed of motion has no effect on the magnitude of the induced current.",
+            "The direction of the induced current changes with speed, but not magnitude.",
+            "Faster motion leads to a greater magnitude of induced current."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: 'The speed of relative motion affects the magnitude of induced current (faster motion, greater deflection).'"
+    },
+    {
+        question: "Q9: Which property of the iron core material is crucial for efficiently linking magnetic flux from the primary to the secondary coil in a transformer?",
+        options: [
+            "High magnetic permeability.",
+            "Low electrical conductivity.",
+            "High thermal resistance.",
+            "Low density."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: 'A core of high magnetic permeability (e.g., iron) that links the magnetic flux generated by the primary coil to the secondary coil efficiently.'"
+    },
+    {
+        question: "Q10: Lenz's law is a direct consequence of which fundamental physical principle?",
+        options: [
+            "Conservation of momentum.",
+            "Conservation of energy.",
+            "Conservation of charge.",
+            "Conservation of mass."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: 'Lenz's law is a direct consequence of the law of conservation of energy.'"
+    },
+    {
+        question: "Q11: In what year did Michael Faraday make the discovery of electromagnetic induction?",
+        options: [
+            "1800",
+            "1820",
+            "1831",
+            "1845"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: 'In 1831, Michael Faraday discovered that a changing magnetic flux linking a conductor induces an electromotive force (e.m.f.) in the conductor.'"
+    },
+    {
+        question: "Q12: What fundamental concept forms the basis for technologies like electric motors and generators?",
+        options: [
+            "Static electricity.",
+            "Thermal expansion.",
+            "Quantum entanglement.",
+            "The interplay of electric and magnetic forces."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: 'The interplay of electric and magnetic forces is the basis for technologies like motors and generators.'"
+    },
+    {
+        question: "Q13: Under what condition will a galvanometer connected to a coil show no deflection, even if magnetic flux is present through the coil?",
+        options: [
+            "When the magnet and coil are stationary relative to each other.",
+            "When the magnet is moving very slowly towards the coil.",
+            "When the coil has a very large number of turns.",
+            "When the magnetic field is very strong."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: 'If the magnet is stationary relative to the coil (even if flux is linking it), no e.m.f. or current is induced because there is no change in flux.'"
+    },
+    {
+        question: "Q14: If a magnet moving away from a coil induces a current in one direction, what happens to the induced current's direction if the magnet's motion is reversed to move towards the coil?",
+        options: [
+            "It remains in the same direction.",
+            "It reverses direction.",
+            "It becomes zero.",
+            "Its magnitude increases, but direction is unchanged."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: 'The direction of deflection reverses when the magnet's direction of motion reverses.'"
+    },
+    {
+        question: "Q15: When the primary circuit switch of a transformer is opened, compared to when it's closed, what happens to the direction of the induced current in the secondary coil?",
+        options: [
+            "It flows in the same direction.",
+            "It becomes intermittent.",
+            "It reverses direction.",
+            "It ceases to exist entirely."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: 'The induced current's direction reverses when the primary circuit switch is opened compared to when it's closed.'"
+    },
+    {
+        question: "Q16: Which term describes an electromotive force induced in a conductor that is not itself moving, but is surrounded by a changing magnetic field?",
+        options: [
+            "Motional electromotive force.",
+            "Dynamic electromotive force.",
+            "Relative electromotive force.",
+            "Statically induced electromotive force."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: 'Statically Induced E.M.F.: Occurs when the conductor is stationary, and the magnetic field (e.g., from a moving magnet) changes around it.'"
+    },
+    {
+        question: "Q17: For a conductor moving through a magnetic field, at what angle between the conductor's velocity and the magnetic field lines is the induced motional e.m.f. at its maximum?",
+        options: [
+            "Perpendicular (90 degrees).",
+            "Parallel (0 degrees).",
+            "Antiparallel (180 degrees).",
+            "Oblique (45 degrees)."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: 'Maximum e.m.f. occurs when θ = 90° (motion perpendicular to field lines).'"
+    },
+    {
+        question: "Q18: What is the standard unit for the rate of change of magnetic flux, which is also equivalent to Volts?",
+        options: [
+            "Weber (Wb).",
+            "Weber per second (Wb/s).",
+            "Tesla (T).",
+            "Henry (H)."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: 'The unit for rate of change of flux is Wb/s, which is equivalent to Volts (V).'"
+    },
+    {
+        question: "Q19: When a magnet approaches a coil, the induced current creates a magnetic field that repels the magnet. This mechanism is an illustration of what fundamental law's application?",
+        options: [
+            "Ohm's Law.",
+            "Kirchhoff's Law.",
+            "Lenz's Law.",
+            "Ampere's Law."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: 'When a magnet approaches a coil, the induced current creates a magnetic field that repels the magnet... This is the principle of Lenz's Law.'"
+    },
+    {
+        question: "Q20: What is the defining characteristic of a step-up transformer in terms of its coil turns?",
+        options: [
+            "The number of primary turns is greater than the number of secondary turns.",
+            "The number of primary turns is equal to the number of secondary turns.",
+            "The number of primary turns is half the number of secondary turns.",
+            "The number of secondary turns is greater than the number of primary turns."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: 'Step-up Transformer: Ns > Np, resulting in Vs > Vp (increases voltage, decreases current).'"
+    },
+    {
+        question: "Q21: What is the primary reason for using laminated iron cores in transformers?",
+        options: [
+            "To reduce energy losses due to eddy currents.",
+            "To increase the magnetic field strength of the primary coil.",
+            "To provide structural support for the coils.",
+            "To enhance the insulation between the primary and secondary windings."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: 'Laminated Iron Cores: Purpose: To reduce energy losses due to eddy currents.'"
+    },
+    {
+        question: "Q22: How do eddy currents manifest their energy losses within the bulk material of a transformer core?",
+        options: [
+            "As audible noise from vibrations.",
+            "As heating due to resistance.",
+            "As magnetic field leakage.",
+            "As chemical reactions within the iron."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: 'These currents cause heating (I²R losses).'"
+    },
+    {
+        question: "Q23: In the context of long-distance electricity transmission, why are transformers considered essential devices?",
+        options: [
+            "They convert alternating current to direct current for transmission.",
+            "They increase the power output of power plants.",
+            "They enable efficient adjustment of voltage and current levels to minimize transmission losses.",
+            "They stabilize the frequency of the alternating current."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: 'Transformers are essential for efficient long-distance transmission of electricity.'"
+    },
+    {
+        question: "Q24: When a step-up transformer at a power plant increases voltage for transmission lines, what simultaneous effect does this have on the current in those lines?",
+        options: [
+            "The current increases proportionally.",
+            "The current remains unchanged.",
+            "The current fluctuates randomly.",
+            "The current decreases proportionally."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: 'At power plants, step-up transformers increase voltage (and decrease current) for transmission lines.'"
+    },
+    {
+        question: "Q25: Which component of a transformer is specifically designed to be connected to the incoming alternating current supply?",
+        options: [
+            "The primary coil.",
+            "The secondary coil.",
+            "The laminated iron core.",
+            "The output terminals."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: 'Primary Coil (Np): Connected to the input AC supply.'"
+    },
+    {
+        question: "Q26: If a coil's number of turns is halved, and the rate of change of magnetic flux through it is doubled, how does the induced electromotive force compare to its original magnitude?",
+        options: [
+            "It is quadrupled.",
+            "It remains unchanged.",
+            "It is halved.",
+            "It is eight times its original magnitude."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: Induced e.m.f. is directly proportional to the number of turns and the rate of change of magnetic flux. If turns are halved (factor of 0.5) and the rate of change of flux is doubled (factor of 2), the combined effect on e.m.f. is 0.5 multiplied by 2, which equals 1. Therefore, the induced e.m.f. remains unchanged."
+    },
+    {
+        question: "Q27: Consider a conductor moving perpendicularly through a uniform magnetic field. If its length is halved and its velocity is quadrupled, how does the induced motional electromotive force compare to its original magnitude?",
+        options: [
+            "It is halved.",
+            "It is quadrupled.",
+            "It is doubled.",
+            "It remains unchanged."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Motional e.m.f. is directly proportional to the length of the conductor, the magnetic field strength, and its velocity when moving perpendicularly. If length is halved (factor of 0.5) and velocity is quadrupled (factor of 4), the combined effect is 0.5 multiplied by 4, which equals 2. Therefore, the induced motional e.m.f. doubles."
+    },
+    {
+        question: "Q28: In an ideal step-up transformer, if the primary voltage is decreased while the input power is maintained, what happens to the primary current and the output voltage?",
+        options: [
+            "Primary current decreases, output voltage decreases.",
+            "Primary current increases, output voltage increases.",
+            "Primary current decreases, output voltage increases.",
+            "Primary current increases, output voltage decreases."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: For an ideal transformer, input power equals output power (P=VI), and voltage is directly proportional to turns (Vs/Vp = Ns/Np). If input power (VpIp) is maintained and primary voltage (Vp) decreases, then primary current (Ip) must increase. Since Ns/Np is constant for a given transformer, if primary voltage (Vp) decreases, secondary voltage (Vs) must also decrease to maintain the voltage ratio."
+    },
+    {
+        question: "Q29: A magnet is rapidly moved towards a coil, inducing a specific e.m.f. If the magnet's speed is then halved, what concurrent adjustment to the coil's number of turns would be necessary to restore the induced e.m.f. to its original magnitude?",
+        options: [
+            "The number of turns must be doubled.",
+            "The number of turns must be quadrupled.",
+            "The number of turns must be halved.",
+            "The number of turns must be increased by a factor of eight."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: Induced e.m.f. is directly proportional to both the rate of change of magnetic flux and the number of turns. Halving the magnet's speed halves the rate of change of magnetic flux. To compensate and restore the original e.m.f., the number of turns must be increased by a factor of two."
+    },
+    {
+        question: "Q30: If a step-down transformer produces a secondary voltage that is exactly one-fourth of its primary voltage, how does the number of turns in its secondary coil compare to the primary coil?",
+        options: [
+            "The secondary coil has four times the turns of the primary.",
+            "The secondary coil has one-fourth the turns of the primary.",
+            "The secondary coil has twice the turns of the primary.",
+            "The secondary coil has half the turns of the primary."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: For an ideal transformer, the ratio of voltages is directly proportional to the ratio of turns (Vs/Vp = Ns/Np). If secondary voltage (Vs) is one-fourth of primary voltage (Vp), then Ns/Np must also be one-fourth, meaning the secondary coil has one-fourth the number of turns of the primary coil."
+    },
+    {
+        question: "Q31: An ideal transformer is designed to decrease voltage. If the input power remains constant and the secondary current doubles, what can be inferred about the primary voltage and primary current?",
+        options: [
+            "Primary voltage doubles, primary current halves.",
+            "Primary voltage remains constant, primary current halves.",
+            "Primary voltage halves, primary current doubles.",
+            "Primary voltage halves, primary current remains constant."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: For an ideal transformer, input power equals output power (VpIp = VsIs). If output power (VsIs) must remain constant and secondary current (Is) doubles, then secondary voltage (Vs) must halve. Since Vs/Vp = Ns/Np is a fixed ratio for the transformer, if Vs halves, then primary voltage (Vp) must also halve. Finally, if input power (VpIp) remains constant and Vp halves, then Ip must double."
+    },
+    {
+        question: "Q32: To minimize power loss during long-distance transmission, what combination of voltage and current is desired, and how does this relate to the turns ratio of the first transformer at the power plant?",
+        options: [
+            "Low voltage and high current, achieved by having fewer turns in the secondary coil than the primary coil.",
+            "High voltage and high current, achieved by having an equal number of turns in both coils.",
+            "Low voltage and low current, achieved by having more turns in the primary coil than the secondary coil.",
+            "High voltage and low current, achieved by having more turns in the secondary coil than the primary coil."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: Power loss is proportional to the square of the current (I²R). To minimize this loss, current must be kept low. Since power transmitted is voltage times current (P=VI), to transmit a given power with low current, voltage must be high. This is achieved by a step-up transformer, where the secondary coil has more turns than the primary coil (Ns > Np)."
+    },
+    {
+        question: "Q33: A conductor moving perfectly parallel to a uniform magnetic field induces no e.m.f. If the conductor's speed is increased significantly while maintaining its parallel motion, what effect would this have on the induced e.m.f.?",
+        options: [
+            "No e.m.f. would be induced regardless of speed.",
+            "A small e.m.f. would be induced, proportional to the speed.",
+            "The e.m.f. would increase proportionally to the square of the speed.",
+            "The e.m.f. would be induced only if the field strength were also increased."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: Motional e.m.f. is induced when a conductor moves through a magnetic field, and no e.m.f. is induced when motion is parallel to field lines (θ = 0°). Even with increased speed, if the motion remains parallel to the field, the angle condition for zero e.m.f. remains met, so no e.m.f. is induced."
+    },
+    {
+        question: "Q34: If the frequency of the AC supply to a transformer were significantly reduced, how would this affect the rate of change of magnetic flux in the core and consequently the induced e.m.f. in the secondary coil?",
+        options: [
+            "The rate of change of magnetic flux would increase, leading to an increase in the induced e.m.f.",
+            "The rate of change of magnetic flux would decrease, leading to a reduction in the induced e.m.f.",
+            "Neither the rate of change of magnetic flux nor the induced e.m.f. would be affected.",
+            "The rate of change of magnetic flux would oscillate more rapidly, increasing e.m.f."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: Transformers rely on a continuously changing magnetic field due to AC. Faraday's Law states induced e.m.f. is proportional to the rate of change of magnetic flux. Reducing the frequency of the AC supply means the magnetic field changes more slowly over time, thus decreasing the rate of change of magnetic flux, and consequently reducing the induced e.m.f. in the secondary coil."
+    },
+    {
+        question: "Q35: An induced current creates a magnetic field that attracts a receding magnet. This attraction directly demonstrates which two aspects of electromagnetic induction?",
+        options: [
+            "The direct proportionality of e.m.f. to the number of turns and the absence of energy conversion.",
+            "The generation of a steady current from a steady magnetic field and the creation of energy.",
+            "Opposition to the change in magnetic flux and the conversion of mechanical energy into electrical energy.",
+            "The dependence of e.m.f. magnitude on speed and the loss of electrical energy."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Lenz's Law explains that the induced e.m.f. opposes the change in magnetic flux that produced it (attraction to a receding magnet opposes its motion). This opposition requires mechanical work to be done, which is then converted into the electrical energy of the induced current, consistent with the conservation of energy."
+    },
+    {
+        question: "Q36: If a transformer is designed to output a higher voltage than its input, and its secondary coil has a certain number of turns, how would the number of turns in its primary coil compare, and what does this imply about the secondary current relative to the primary?",
+        options: [
+            "Primary turns are more than secondary turns, and secondary current is greater than primary current.",
+            "Primary turns are equal to secondary turns, and secondary current is equal to primary current.",
+            "Primary turns are more than secondary turns, and secondary current is less than primary current.",
+            "Primary turns are fewer than secondary turns, and secondary current is less than primary current."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: For a step-up transformer (output higher voltage, Vs > Vp), the number of secondary turns must be greater than primary turns (Ns > Np). For an ideal transformer, Vs/Vp = Ip/Is. Since Vs > Vp, it follows that Ip > Is, meaning the secondary current is less than the primary current."
+    },
+    {
+        question: "Q37: What would be the effect on a galvanometer connected to a secondary coil if the primary coil's current is switched on, reaches a steady state, and then the primary coil itself is physically moved away from the secondary?",
+        options: [
+            "The galvanometer would first deflect momentarily, then return to zero, and then deflect momentarily again in the opposite direction.",
+            "The galvanometer would show a continuous deflection, changing direction only when the primary is moved.",
+            "The galvanometer would deflect once when the current is switched on and remain at that deflection.",
+            "The galvanometer would not deflect at all, as the primary current eventually becomes steady."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: A change in magnetic flux induces an e.m.f. Switching on the primary creates a changing flux, inducing a momentary current. A steady current produces no change in flux, so the galvanometer returns to zero. Moving the primary away causes another change in flux (decrease), inducing another momentary current, but in the opposite direction compared to the initial increase in flux."
+    },
+    {
+        question: "Q38: A technician mistakenly uses a transformer with a non-laminated solid iron core instead of a laminated one. What immediate consequence would be most significant in terms of the transformer's operational efficiency?",
+        options: [
+            "Reduced magnetic field strength in the core, lowering voltage output.",
+            "Substantial energy loss in the core as heat.",
+            "Increased voltage output due to better magnetic coupling.",
+            "Faster response time to changes in primary current."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: Laminated cores are used to reduce energy losses due to eddy currents. A solid core would allow for larger eddy currents to circulate within the bulk material, leading to significantly increased I²R heating losses and thus a substantial reduction in operational efficiency."
+    },
+    {
+        question: "Q39: If the length of a conductor moving through a magnetic field is doubled, and its velocity is halved, how must the magnetic field strength change to maintain the original motional e.m.f.?",
+        options: [
+            "It must be doubled.",
+            "It must be halved.",
+            "It must remain unchanged.",
+            "It must be quadrupled."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Motional e.m.f. is directly proportional to the magnetic field strength, length, and velocity (assuming perpendicular motion). If length doubles and velocity halves, these two changes cancel each other out in terms of their effect on e.m.f. (2 * 0.5 = 1). Therefore, to maintain the original e.m.f., the magnetic field strength must remain unchanged."
+    },
+    {
+        question: "Q40: Faraday's Law implies induced e.m.f. is proportional to the rate of change of magnetic flux and the number of turns. If an induced e.m.f. needs to be quadrupled, and the rate of change of flux is simultaneously halved, how must the number of turns in the coil be adjusted?",
+        options: [
+            "The number of turns must be reduced to one-fourth.",
+            "The number of turns must be doubled.",
+            "The number of turns must be quadrupled.",
+            "The number of turns must be increased by a factor of eight."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: Induced e.m.f. is directly proportional to the product of the number of turns and the rate of change of magnetic flux. To quadruple the e.m.f., while the rate of change of flux is halved, the number of turns must compensate for both. To get a factor of 4 increase from the e.m.f., if one component provides a factor of 0.5 (halved flux rate), the other component (turns) must provide a factor of 8 (4 / 0.5 = 8). Thus, the number of turns must be increased by a factor of eight."
+    },
+    {
+        question: "Q41: A specific material is chosen for a transformer core primarily due to its high magnetic permeability. How does this property directly contribute to the induction mechanism in the secondary coil, distinct from its role in reducing eddy currents?",
+        options: [
+            "It enhances the effective transfer of changing magnetic flux from the primary to the secondary winding.",
+            "It prevents the primary current from inducing an e.m.f. in the secondary coil.",
+            "It increases the electrical resistance of the magnetic circuit, improving efficiency.",
+            "It stabilizes the direct current component of the input power, ensuring constant output."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: A core of high magnetic permeability links the magnetic flux generated by the primary coil to the secondary coil efficiently. This efficient guiding and concentration of the changing magnetic flux ensures that a larger proportion of the flux generated by the primary coil passes through the secondary coil, maximizing the induced e.m.f. according to Faraday's Law."
+    },
+    {
+        question: "Q42: Imagine two identical coils. Coil A is subjected to a constant magnetic field that suddenly halves in strength. Coil B is moved at a constant velocity through an identical uniform magnetic field without changing its orientation or area. Which coil will definitely experience an induced e.m.f., and why?",
+        options: [
+            "Both coils will experience an induced e.m.f. because both involve magnetic fields and motion.",
+            "Coil A, because a change in magnetic field strength inherently implies a change in magnetic flux over time.",
+            "Coil B, because the act of moving through a magnetic field always induces an e.m.f. regardless of uniformity.",
+            "Neither coil, as constant velocity or constant field strength does not meet the criteria for induction."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: The basic requirement for electromagnetic induction is a change in magnetic flux linking the conductor or coil over time. For Coil A, the magnetic field 'suddenly halves in strength', which directly constitutes a change in magnetic flux over time, thus definitely inducing an e.m.f. For Coil B, moving at a constant velocity through a *uniform* magnetic field, without changing its orientation or area, means the magnetic flux linking the coil does not necessarily change, and thus might not induce an e.m.f."
+    },
+    {
+        question: "Q43: During the opening of a switch in the primary circuit of a transformer, a momentary current is induced in the secondary coil. Lenz's Law implies that this induced current's magnetic field would attempt to perform what action regarding the initial primary magnetic flux?",
+        options: [
+            "It would attempt to reverse the direction of the primary magnetic flux completely.",
+            "It would attempt to amplify the decrease in primary magnetic flux.",
+            "It would attempt to maintain the original direction and magnitude of the decreasing primary magnetic flux.",
+            "It would attempt to convert the primary magnetic flux into an electric charge."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Lenz's Law states that the induced e.m.f. (and current) opposes the change in magnetic flux that produced it. Opening the switch causes the primary current and its associated magnetic flux to decrease. To oppose this decrease, the induced current in the secondary coil creates a magnetic field that attempts to 'support' or 'maintain' the original direction and magnitude of the flux, thereby opposing its reduction."
+    },
+    {
+        question: "Q44: Consider a transformer operating efficiently in a power transmission grid. If the distance of transmission is significantly increased, what fundamental adjustment to the transformer at the power plant's output would be paramount to maintain efficient power delivery and why?",
+        options: [
+            "Reducing the ratio of secondary to primary turns to decrease transmission voltage, thereby increasing current and power loss.",
+            "Increasing the thickness of the transmission cables to decrease resistance, which is independent of transformer settings.",
+            "Replacing the AC supply with a DC supply to eliminate inductive losses, despite other inefficiencies.",
+            "Increasing the ratio of secondary to primary turns in the step-up transformer to further elevate the transmission voltage, thereby decreasing the current and minimizing transmission losses."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: Power loss in transmission lines is proportional to the square of the current (P = I²R). Increasing transmission distance increases the total resistance (R) of the cables. To maintain efficient power delivery (minimize I²R losses) for a given amount of power, the current (I) must be reduced. To reduce current while transmitting the same power, the voltage must be increased even further (P=VI). This is achieved by increasing the turns ratio (Ns/Np) of the step-up transformer at the power plant."
+    },
+    {
+        question: "Q45: A conductor of fixed length moves with constant velocity through a uniform magnetic field, generating a specific motional e.m.f. If the field strength is doubled, and the conductor's velocity is also doubled, while maintaining perpendicular motion, what must be done to the conductor's length to revert the induced e.m.f. back to its original value?",
+        options: [
+            "The conductor's length must be reduced to one-fourth of its original value.",
+            "The conductor's length must be doubled.",
+            "The conductor's length must remain unchanged.",
+            "The conductor's length must be increased by a factor of eight."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: Motional e.m.f. is directly proportional to the product of magnetic field strength, length, and velocity (ε = Blv for perpendicular motion). If field strength doubles (factor of 2) and velocity doubles (factor of 2), their combined effect is a factor of 4 increase in e.m.f. To revert the e.m.f. back to its original value, the length must counteract this factor of 4 increase. Therefore, the length must be reduced by a factor of four, i.e., to one-fourth of its original value."
+    },
+    {
+        question: "Q46: If an ideal step-down transformer has a secondary voltage that is exactly one-third of its primary voltage, and the primary circuit draws a current of a certain magnitude, what can be definitively stated about the current delivered by the secondary coil?",
+        options: [
+            "The secondary coil delivers a current that is one-third the magnitude of the primary current.",
+            "The secondary coil delivers a current three times the magnitude of the primary current.",
+            "The secondary coil delivers a current equal to the magnitude of the primary current.",
+            "The secondary coil delivers a current that is nine times the magnitude of the primary current."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: For an ideal transformer, the ratio of voltages is inversely proportional to the ratio of currents (Vs/Vp = Ip/Is). If the secondary voltage (Vs) is one-third of the primary voltage (Vp), then Vs/Vp = 1/3. Therefore, Ip/Is must also be 1/3, which implies Is = 3 * Ip. The secondary current is three times the magnitude of the primary current."
+    },
+    {
+        question: "Q47: In an experiment involving a primary and secondary coil, a steady current is established in the primary, and then the primary coil is slowly rotated by 90 degrees relative to the secondary. What is the expected behavior of the galvanometer in the secondary circuit during this rotation?",
+        options: [
+            "The galvanometer would show no deflection, as the primary current is steady.",
+            "The galvanometer would show a momentary deflection, then return to zero once the rotation is complete.",
+            "The galvanometer would show a sustained deflection during the rotation, returning to zero when rotation stops.",
+            "The galvanometer would show continuous oscillations throughout the rotation process."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Electromagnetic induction requires a change in magnetic flux. While the primary current is steady, its rotation changes the orientation of the primary coil's magnetic field relative to the secondary coil. This change in orientation means the magnetic flux *linking* the secondary coil changes over time. Therefore, an e.m.f. and current will be induced, and because the rotation is 'slowly rotated', this change is sustained over the duration of the rotation, causing a sustained deflection until the rotation ceases."
+    },
+    {
+        question: "Q48: Lenz's Law is stated as a consequence of the conservation of energy. If the induced current's magnetic field did *not* oppose the change in flux, what hypothetical scenario would contradict the principle of energy conservation?",
+        options: [
+            "The induced current would be too small to generate any noticeable magnetic field.",
+            "The magnetic field would simply disappear without inducing any current.",
+            "The energy of the magnetic field would be converted entirely into heat without any electrical output.",
+            "The magnet would accelerate towards the coil while simultaneously inducing an increasing current, creating energy from no external work."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: Lenz's Law states that the induced e.m.f. opposes the change in magnetic flux that produced it, conserving energy by converting mechanical work into electrical energy. If the induced field *aided* the change, for instance, by attracting an approaching magnet, the magnet would accelerate spontaneously towards the coil, gaining kinetic energy, and simultaneously induce an increasing current, producing electrical energy. This would generate energy from nothing, violating the law of conservation of energy."
+    },
+    {
+        question: "Q49: If a closed conducting loop is stationary, but an external magnet starts to oscillate nearby, which type of e.m.f. is primarily induced, and what is the core reason for its presence?",
+        options: [
+            "Statically induced e.m.f., due to the time-varying magnetic flux linking the stationary loop.",
+            "Motional e.m.f., due to the relative motion between the magnet and the coil.",
+            "Self-induced e.m.f., due to internal resistance changes within the loop.",
+            "Dynamically induced e.m.f., caused by the oscillation frequency of the magnet."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that: 'Statically Induced E.M.F.: Occurs when the conductor is stationary, and the magnetic field (e.g., from a moving magnet) changes around it.' In this scenario, the loop is stationary, but the oscillating magnet creates a changing magnetic field around it, leading to a time-varying magnetic flux linking the loop, which induces a statically induced e.m.f."
+    },
+    {
+        question: "Q50: In a real-world application, step-up transformers are used at power plants before long-distance transmission. Which choice best explains the multi-step rationale for this design, considering both power output and power loss?",
+        options: [
+            "To decrease voltage and increase current for safer handling, while accepting higher power losses.",
+            "To increase voltage and simultaneously decrease current to reduce heat dissipated along the transmission cables, while maintaining total power transfer.",
+            "To convert AC into DC for more efficient transmission, thereby eliminating all forms of power loss.",
+            "To increase the total power generated by the power plant, making transmission inherently more efficient."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: 'At power plants, step-up transformers increase voltage (and decrease current) for transmission lines. This minimizes power loss (P = I²R) along the cables, as losses are proportional to the square of the current.' The rationale is to transmit a given amount of power (P=VI) by drastically increasing voltage (V) and proportionally decreasing current (I). This reduction in current is critical because power losses in transmission lines are primarily resistive (I²R losses), which are highly sensitive to current magnitude. Minimizing current thus minimizes energy wasted as heat, maintaining efficient power transfer over long distances."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Physics ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-PHY-04';
+let quizData = quizData_WCW_PHY_04;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-PHY-04', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-PHY-04', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-PHY-04', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_PHY_04;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_PHY_04;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_PHY_04[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_PHY_04.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
